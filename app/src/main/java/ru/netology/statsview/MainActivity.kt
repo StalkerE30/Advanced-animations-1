@@ -11,12 +11,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val view = findViewById<Statsview>(R.id.statsView)
+        view.postDelayed({
         view.data =  listOf(
-            50F,
-            50F,
-            50F,
-            50F,
-        )
+                50F,
+                50F,
+                50F,
+                50F,
+            )
+        }, 3000)
 
 //        val textView = findViewById<TextView>(R.id.label)
 //        view.startAnimation(
