@@ -83,21 +83,14 @@ class Statsview @JvmOverloads constructor(
         }
         var startAngle = -90F
         var sumData = 0F
-        var primColor =0
-        var primAngle : Float = data[0]/data.sum() * 360F/2
         data.forEachIndexed { index, datum ->
             //var angle = datum * 360F
             sumData+=datum //пригодится потом
             var angle = datum / data.sum() * 360F
             paint.color = colors.getOrElse(index) { generateRandomColor() }
-            if (index == 0) {
-                primColor = paint.color
-            }
             canvas.drawArc(oval, startAngle, angle*progress, false, paint)
             startAngle += angle
         }
-        paint.color = primColor
-        canvas.drawArc(oval, startAngle, primAngle, false, paint)
 
         canvas.drawText(
             "%.2f%%".format(data.sum()/data.sum() * 100),
