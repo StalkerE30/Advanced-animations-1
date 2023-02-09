@@ -88,7 +88,8 @@ class Statsview @JvmOverloads constructor(
             sumData+=datum //пригодится потом
             var angle = datum / data.sum() * 360F
             paint.color = colors.getOrElse(index) { generateRandomColor() }
-            canvas.drawArc(oval, startAngle, angle*progress, false, paint)
+            //canvas.drawArc(oval, startAngle, angle*progress, false, paint)
+            canvas.drawArc(oval, startAngle + 360F * progress, angle * progress, false, paint)
             startAngle += angle
         }
 
@@ -115,7 +116,7 @@ class Statsview @JvmOverloads constructor(
                 progress = anim.animatedValue as Float
                 invalidate()
             }
-            duration = 300
+            duration=3000
             interpolator = LinearInterpolator()
         }.also {
             it.start()
